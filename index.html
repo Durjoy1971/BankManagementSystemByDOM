@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div
+      class="bg-green-400 w-[100vw] h-[100vh] justify-center items-center flex"
+    >
+      <div id="welcomePage">
+        <div class="flex gap-4">
+          <div class="flex flex-col gap-4 bg-red-400">
+            <h1>Login</h1>
+            <input id="loginUserName" placeholder="UserName" type="text" />
+            <input id="loginPassword" placeholder="Password" type="text" />
+            <button
+              id="loginBtn"
+              onclick="handleLoginBtn()"
+              class="bg-teal-500 w-16 mx-auto"
+            >
+              Submit
+            </button>
+          </div>
+          <div class="flex flex-col gap-4 bg-red-400">
+            <h1>Sign Up</h1>
+            <input
+              id="signUpUserName"
+              placeholder="Set Your UserName"
+              type="text"
+              class="block"
+            />
+            <input
+              id="signUpPassword"
+              placeholder="Set Your Password"
+              type="text"
+              class="block"
+            />
+            <button
+              id="signUpBtn"
+              onclick="handleSignUpBtn()"
+              class="bg-teal-500 w-16 mx-auto"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="mainPage">
+        <div class="flex gap-4">
+          <h1 id="welcomeUser">Welcome : DJ</h1>
+          <h1 id="userMoney">Total Money: 10</h1>
+        </div>
+        <!-- *Alada Layer -->
+        <div class="flex gap-3">
+          <div id="historyDiv" class="bg-slate-300">
+            <h1>Last 10 Transactions:</h1>
+            <div id="historyUserTransaction">
+              <!-- <h1>Money Out : 50</h1>
+              <h1>Money In : 20</h1>
+              <h1>Money Transfer : 70</h1> -->
+            </div>
+          </div>
+          <!-- *Selection Process -->
+          <div id="optionDiv" class="flex flex-col gap-3">
+            <div class="bg-cyan-300">
+              <label for="transaction">Transaction Type</label>
+              <select name="transaction" id="transactionType">
+                <option value="Deposit">Deposit</option>
+                <option value="Withdraw">Withdraw</option>
+                <option value="Transfer">Transfer</option>
+              </select>
+              <button
+                onclick="handleTransactionBtn()"
+                id="transactionBtn"
+                class="bg-teal-500 px-2 py-1 rounded-md mt-4 mx-auto block"
+              >
+                Submit
+              </button>
+            </div>
+            <!-- *Option Konta -->
+            <div>
+              <div id="depositWithdraw" class="hidden">
+                <div class="flex flex-col gap-3">
+                  <h1 id="depositWithdrawTypes">Deposit or Withdraw</h1>
+                  <input
+                    id="depositWithdrawAmount"
+                    type="text"
+                    placeholder="Enter Money"
+                  />
+                  <button
+                    onclick="depositWithdrawBtn()"
+                    class="bg-teal-500 px-2 py-1 rounded-md mt-4 mx-auto block"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+
+              <div id="transfer" class="hidden">
+                <div class="flex flex-col gap-3">
+                  <h1 id="transferTypes">Transfer</h1>
+                  <input
+                    id="transferUserName"
+                    type="text"
+                    placeholder="Receiver UserName"
+                    class="text-xs"
+                  />
+                  <input
+                    id="transferAmount"
+                    type="text"
+                    placeholder="Enter Money"
+                    class="text-xs"
+                  />
+                  <button
+                    onclick="transferBtn()"
+                    class="bg-teal-500 px-2 py-1 rounded-md mt-4 mx-auto block"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button onclick="logOutBtn()" class="bg-teal-500 px-2 py-1 rounded-md mt-4 mx-auto flex"> LogOut </button>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
+
+<!-- 
+1st Page
+User ==> Login | Create New User
+New Account
+
+2nd Page
+Total Money = 0
+History div thakbe
+Log Out
+
+Features
+Deposit ==> Taka Joma
+Withdraw ==> Taka Ber Kore Ana
+Transfer ==> One Account To Another Account
+Accounts ==> Account Details
+ -->
