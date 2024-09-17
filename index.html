@@ -8,13 +8,14 @@
   <body>
     <div
       class="bg-green-400 w-[100vw] h-[100vh] justify-center items-center flex"
+      style="background-image: url('https://c0.wallpaperflare.com/preview/266/613/101/money-finance-bank-cash.jpg');"
     >
       <div id="welcomePage">
-        <div class="flex gap-4">
-          <div class="flex flex-col gap-4 bg-red-400">
+        <div class="flex gap-4 ">
+          <div class="flex flex-col gap-4 bg-blue-300 p-5">
             <h1>Login</h1>
-            <input id="loginUserName" placeholder="UserName" type="text" />
-            <input id="loginPassword" placeholder="Password" type="text" />
+            <input id="loginUserName" placeholder="UserName" type="text" class="px-2 py-1 rounded-md" />
+            <input id="loginPassword" placeholder="Password" type="text" class="px-2 py-1 rounded-md" />
             <button
               id="loginBtn"
               onclick="handleLoginBtn()"
@@ -23,19 +24,19 @@
               Submit
             </button>
           </div>
-          <div class="flex flex-col gap-4 bg-red-400">
+          <div class="flex flex-col gap-4 bg-blue-300 p-5">
             <h1>Sign Up</h1>
             <input
               id="signUpUserName"
               placeholder="Set Your UserName"
               type="text"
-              class="block"
+              class="px-2 py-1 rounded-md"
             />
             <input
               id="signUpPassword"
               placeholder="Set Your Password"
               type="text"
-              class="block"
+              class="px-2 py-1 rounded-md"
             />
             <button
               id="signUpBtn"
@@ -49,14 +50,14 @@
       </div>
 
       <div id="mainPage">
-        <div class="flex gap-4">
+        <div class="flex gap-4 bg-blue-300 p-5">
           <h1 id="welcomeUser">Welcome : DJ</h1>
           <h1 id="userMoney">Total Money: 10</h1>
         </div>
         <!-- *Alada Layer -->
         <div class="flex gap-3">
-          <div id="historyDiv" class="bg-slate-300">
-            <h1>Last 10 Transactions:</h1>
+          <div id="historyDiv" class="bg-slate-300 p-4">
+            <h1 class="text-teal-700 font-bold">Last 10 Transactions:</h1>
             <div id="historyUserTransaction">
               <!-- <h1>Money Out : 50</h1>
               <h1>Money In : 20</h1>
@@ -65,8 +66,8 @@
           </div>
           <!-- *Selection Process -->
           <div id="optionDiv" class="flex flex-col gap-3">
-            <div class="bg-cyan-300">
-              <label for="transaction">Transaction Type</label>
+            <div class="bg-blue-300 p-4">
+              <label for="transaction" class="text-teal-800 font-bold">Transaction Type</label>
               <select name="transaction" id="transactionType">
                 <option value="Deposit">Deposit</option>
                 <option value="Withdraw">Withdraw</option>
@@ -83,12 +84,13 @@
             <!-- *Option Konta -->
             <div>
               <div id="depositWithdraw" class="hidden">
-                <div class="flex flex-col gap-3">
+                <div class="flex flex-col gap-3 bg-blue-300 p-5">
                   <h1 id="depositWithdrawTypes">Deposit or Withdraw</h1>
                   <input
                     id="depositWithdrawAmount"
                     type="text"
                     placeholder="Enter Money"
+                    class="px-2 py-1 rounded-lg"
                   />
                   <button
                     onclick="depositWithdrawBtn()"
@@ -100,19 +102,19 @@
               </div>
 
               <div id="transfer" class="hidden">
-                <div class="flex flex-col gap-3">
+                <div class="flex flex-col gap-3 bg-blue-300 p-5">
                   <h1 id="transferTypes">Transfer</h1>
                   <input
                     id="transferUserName"
                     type="text"
                     placeholder="Receiver UserName"
-                    class="text-xs"
+                    class="text-sm rounded-md px-2 py-1"
                   />
                   <input
                     id="transferAmount"
                     type="text"
                     placeholder="Enter Money"
-                    class="text-xs"
+                    class="text-sm rounded-md px-2 py-1"
                   />
                   <button
                     onclick="transferBtn()"
