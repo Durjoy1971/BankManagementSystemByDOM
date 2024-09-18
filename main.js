@@ -33,12 +33,6 @@ const users = [
   },
 ];
 
-/*
-
-
-
-*/
-
 let id = 10;
 let currentUser = {};
 
@@ -126,8 +120,10 @@ const welcomeUser = document.querySelector("#welcomeUser");
 const userMoney = document.querySelector("#userMoney");
 
 const displayUserNameMoney = () => {
-  welcomeUser.textContent = currentUser.userName;
-  userMoney.textContent = `Cash : ${currentUser.totalMoney}`;
+  welcomeUser.textContent = `Welcome, ${currentUser.userName}`;
+  userMoney.textContent = `Current Cash : ${currentUser.totalMoney}`;
+  welcomeUser.classList = "font-bold text-white";
+  userMoney.classList = "font-bold text-white";
 };
 
 const loadHistoryOfTransaction = (flag = false) => {
@@ -138,12 +134,17 @@ const loadHistoryOfTransaction = (flag = false) => {
     let text = `${types.type} : ${types.amount}`;
     const textElement = document.createElement("h1");
     textElement.textContent = text;
+    if (types.type == "Deposit") {
+      textElement.classList = "text-green-800 font-weight:600 font-medium";
+    } else if (types.type == "Withdraw") {
+      textElement.classList = "text-red-800 font-weight:600 font-medium";
+    } else {
+      textElement.classList = "text-blue-800 font-weight:600 font-medium";
+    }
     historyUserTransaction.append(textElement);
     userMoney.textContent = `Cash : ${currentUser.totalMoney}`;
   });
 };
-
-
 
 //* transaction menu ==> selection
 const transactionType = document.querySelector("#transactionType");
@@ -166,6 +167,7 @@ const handleTransactionBtn = () => {
     depositWithdraw.classList = "";
     depositWithdrawTypes.textContent = chosen;
   }
+  depositWithdrawTypes.classList = 'flex mx-auto font-bold text-red-600';
 };
 
 //* depositWithdraw r jonno
@@ -272,7 +274,7 @@ const transferBtn = () => {
 
 //* For Combine Page
 function initialPage() {
-previousPage();
+  previousPage();
 }
 
 function nextPage(loginUserName) {
@@ -280,11 +282,11 @@ function nextPage(loginUserName) {
   welcomePage.classList = "hidden";
   mainPage.classList = "";
 
-  users.forEach((value,index) => {
-    if(value.userName === loginUserName){
-        currentUser = users[index];
+  users.forEach((value, index) => {
+    if (value.userName === loginUserName) {
+      currentUser = users[index];
     }
-  })
+  });
 
   displayUserNameMoney();
   loadHistoryOfTransaction(true);
@@ -296,9 +298,9 @@ function previousPage() {
 }
 
 const logOutBtn = () => {
-    previousPage();
-    currentUser = {};
-    alert('Log Out Successfull');
-}
+  previousPage();
+  currentUser = {};
+  alert("Log Out Successfull");
+};
 
 initialPage();

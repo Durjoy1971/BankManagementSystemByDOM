@@ -8,40 +8,52 @@
   <body>
     <div
       class="bg-green-400 w-[100vw] h-[100vh] justify-center items-center flex"
-      style="background-image: url('https://c0.wallpaperflare.com/preview/266/613/101/money-finance-bank-cash.jpg');"
+      style="
+        background-image: url('https://c0.wallpaperflare.com/preview/266/613/101/money-finance-bank-cash.jpg');
+      "
     >
       <div id="welcomePage">
-        <div class="flex gap-4 ">
+        <div class="flex gap-4">
           <div class="flex flex-col gap-4 bg-blue-300 p-5">
-            <h1>Login</h1>
-            <input id="loginUserName" placeholder="UserName" type="text" class="px-2 py-1 rounded-md" />
-            <input id="loginPassword" placeholder="Password" type="text" class="px-2 py-1 rounded-md" />
+            <h1 class="text-blue-600 text-lg text-center font-bold">Login</h1>
+            <input
+              id="loginUserName"
+              placeholder="UserName"
+              type="text"
+              class="px-2 py-1 rounded-md text-sm"
+            />
+            <input
+              id="loginPassword"
+              placeholder="Password"
+              type="text"
+              class="px-2 py-1 rounded-md text-sm"
+            />
             <button
               id="loginBtn"
               onclick="handleLoginBtn()"
-              class="bg-teal-500 w-16 mx-auto"
+              class="bg-teal-500 rounded-lg px-2 py-1 text-white"
             >
               Submit
             </button>
           </div>
           <div class="flex flex-col gap-4 bg-blue-300 p-5">
-            <h1>Sign Up</h1>
+            <h1 class="text-green-700 text-lg text-center font-bold">Sign Up</h1>
             <input
               id="signUpUserName"
               placeholder="Set Your UserName"
               type="text"
-              class="px-2 py-1 rounded-md"
+              class="px-2 py-1 rounded-md text-sm"
             />
             <input
               id="signUpPassword"
               placeholder="Set Your Password"
               type="text"
-              class="px-2 py-1 rounded-md"
+              class="px-2 py-1 rounded-md text-sm"
             />
             <button
               id="signUpBtn"
               onclick="handleSignUpBtn()"
-              class="bg-teal-500 w-16 mx-auto"
+              class="bg-teal-500 rounded-lg px-2 py-1 text-white"
             >
               Submit
             </button>
@@ -50,7 +62,7 @@
       </div>
 
       <div id="mainPage">
-        <div class="flex gap-4 bg-blue-300 p-5">
+        <div class="flex bg-teal-500 p-5 justify-around m-2">
           <h1 id="welcomeUser">Welcome : DJ</h1>
           <h1 id="userMoney">Total Money: 10</h1>
         </div>
@@ -67,8 +79,10 @@
           <!-- *Selection Process -->
           <div id="optionDiv" class="flex flex-col gap-3">
             <div class="bg-blue-300 p-4">
-              <label for="transaction" class="text-teal-800 font-bold">Transaction Type</label>
-              <select name="transaction" id="transactionType">
+              <label for="transaction" class="text-teal-800 font-bold"
+                >Transaction Type</label
+              >
+              <select name="transaction" id="transactionType" class="px-2 py-1 text-sm rounded-lg">
                 <option value="Deposit">Deposit</option>
                 <option value="Withdraw">Withdraw</option>
                 <option value="Transfer">Transfer</option>
@@ -76,7 +90,7 @@
               <button
                 onclick="handleTransactionBtn()"
                 id="transactionBtn"
-                class="bg-teal-500 px-2 py-1 rounded-md mt-4 mx-auto block"
+                class="bg-teal-500 rounded-lg px-2 py-1 flex mx-auto mt-4 text-white"
               >
                 Submit
               </button>
@@ -94,7 +108,7 @@
                   />
                   <button
                     onclick="depositWithdrawBtn()"
-                    class="bg-teal-500 px-2 py-1 rounded-md mt-4 mx-auto block"
+                    class="bg-teal-500 rounded-lg px-2 py-1 text-white"
                   >
                     Submit
                   </button>
@@ -103,7 +117,7 @@
 
               <div id="transfer" class="hidden">
                 <div class="flex flex-col gap-3 bg-blue-300 p-5">
-                  <h1 id="transferTypes">Transfer</h1>
+                  <h1 id="transferTypes" class="flex mx-auto font-bold text-red-600">Transfer</h1>
                   <input
                     id="transferUserName"
                     type="text"
@@ -118,7 +132,7 @@
                   />
                   <button
                     onclick="transferBtn()"
-                    class="bg-teal-500 px-2 py-1 rounded-md mt-4 mx-auto block"
+                    class="bg-teal-500 rounded-lg px-2 py-1 text-white"
                   >
                     Submit
                   </button>
@@ -127,7 +141,12 @@
             </div>
           </div>
         </div>
-        <button onclick="logOutBtn()" class="bg-teal-500 px-2 py-1 rounded-md mt-4 mx-auto flex"> LogOut </button>
+        <button
+          onclick="logOutBtn()"
+          class="bg-teal-500 px-2 py-1 rounded-lg mt-4 mx-auto flex text-white"
+        >
+          LogOut
+        </button>
       </div>
     </div>
     <script src="main.js"></script>
