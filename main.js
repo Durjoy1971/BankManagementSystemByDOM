@@ -19,7 +19,7 @@ const saveUsersToLocalStorage = () => {
   localStorage.setItem("users", JSON.stringify(users));
 };
 
-let id = 10;
+let id = users.length+1;
 let currentUser = {};
 
 const welcomePage = document.querySelector("#welcomePage");
@@ -247,7 +247,8 @@ const transferBtn = () => {
     });
     flag = true;
   } else {
-    if (value >= 1 && value <= currentUser.totalMoney)
+    console.log(value, currentUser.totalMoney);
+    if (value < 1 || value > currentUser.totalMoney)
       alert(`Insufficient Balance!! `);
     else if (receiver == currentUser.userName)
       alert("Self Transaction Is Blocked");
