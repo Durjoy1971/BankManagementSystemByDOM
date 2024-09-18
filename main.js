@@ -1,37 +1,23 @@
-const users = [
+const users = JSON.parse(localStorage.getItem("users")) || [
   {
     userId: 1,
     userName: "DJ",
     passWord: "1",
     totalMoney: 0,
-    historyTransaction: [
-      {
-        type: "Deposit",
-        amount: 100,
-      },
-      {
-        type: "Withdraw",
-        amount: -20,
-      },
-      {
-        type: "Transfer",
-        amount: -30,
-      },
-    ],
+    historyTransaction: [],
   },
   {
     userId: 2,
     userName: "D",
     passWord: "1",
     totalMoney: 0,
-    historyTransaction: [
-      {
-        type: "Deposit",
-        amount: 100,
-      },
-    ],
+    historyTransaction: [],
   },
 ];
+
+const saveUsersToLocalStorage = () => {
+  localStorage.setItem("users", JSON.stringify(users));
+};
 
 let id = 10;
 let currentUser = {};
@@ -130,7 +116,6 @@ const loadHistoryOfTransaction = (flag = false) => {
   // historyUserTransaction
   historyUserTransaction.innerHTML = "";
   currentUser.historyTransaction.map((types) => {
-    if (flag) currentUser.totalMoney += types.amount;
     let text = `${types.type} : ${types.amount}`;
     const textElement = document.createElement("h1");
     textElement.textContent = text;
@@ -157,7 +142,7 @@ const depositWithdrawTypes = document.querySelector("#depositWithdrawTypes");
 
 const handleTransactionBtn = () => {
   const chosen = transactionType.value;
-  console.log(chosen);
+  // console.log(chosen);
   if (chosen === "Transfer") {
     transfer.classList = "";
     depositWithdraw.classList = "hidden";
@@ -167,7 +152,7 @@ const handleTransactionBtn = () => {
     depositWithdraw.classList = "";
     depositWithdrawTypes.textContent = chosen;
   }
-  depositWithdrawTypes.classList = 'flex mx-auto font-bold text-red-600';
+  depositWithdrawTypes.classList = "flex mx-auto font-bold text-red-600";
 };
 
 //* depositWithdraw r jonno
@@ -209,6 +194,8 @@ const depositWithdrawBtn = () => {
     loadHistoryOfTransaction();
     depositWithdraw.classList = "hidden";
     transfer.classList = "hidden";
+    transferAmount.value = "";
+    transferUserName.value = "";
     depositWithdrawAmount.value = "";
   }
 };
@@ -248,6 +235,7 @@ const transferBtn = () => {
       }
     });
     // console.log();
+    receiverUser.totalMoney += value;
     receiverUser.historyTransaction.push({
       type: "Deposit",
       amount: value,
@@ -259,16 +247,21 @@ const transferBtn = () => {
     });
     flag = true;
   } else {
-    alert(`Insufficient Balance!! `);
+    if (value >= 1 && value <= currentUser.totalMoney)
+      alert(`Insufficient Balance!! `);
+    else if (receiver == currentUser.userName)
+      alert("Self Transaction Is Blocked");
+    else alert("Receiver Not Found");
   }
 
   if (flag) {
     alert(`Transaction Successfull !! `);
     loadHistoryOfTransaction();
-    depositWithdraw.classList = "hidden";
-    transfer.classList = "hidden";
     transferAmount.value = "";
     transferUserName.value = "";
+    depositWithdrawAmount.value = "";
+    depositWithdraw.classList = "hidden";
+    transfer.classList = "hidden";
   }
 };
 
@@ -278,7 +271,7 @@ function initialPage() {
 }
 
 function nextPage(loginUserName) {
-  console.log(loginUserName);
+  // console.log(loginUserName);
   welcomePage.classList = "hidden";
   mainPage.classList = "";
 
@@ -300,6 +293,9 @@ function previousPage() {
 const logOutBtn = () => {
   previousPage();
   currentUser = {};
+  saveUsersToLocalStorage();
+  depositWithdraw.classList = "hidden";
+  transfer.classList = "hidden";
   alert("Log Out Successfull");
 };
 
