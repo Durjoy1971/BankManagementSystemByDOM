@@ -192,10 +192,7 @@ const depositWithdrawBtn = () => {
       const currentAmount = Number(currentUser.totalMoney) + Number(value * -1);
       currentUser.totalMoney = currentAmount;
       displayUserNameMoney();
-      currentUser.historyTransaction.push({
-        type: depositWithdrawTypes.textContent,
-        amount: Number(value * -1),
-      });
+
       flag = true;
       currentUser.historyTransaction.push({
         type: depositWithdrawTypes.textContent,
@@ -210,6 +207,7 @@ const depositWithdrawBtn = () => {
     loadHistoryOfTransaction();
     depositWithdraw.classList = "hidden";
     transfer.classList = "hidden";
+    depositWithdrawAmount.value = "";
   }
 };
 
@@ -267,13 +265,14 @@ const transferBtn = () => {
     loadHistoryOfTransaction();
     depositWithdraw.classList = "hidden";
     transfer.classList = "hidden";
+    transferAmount.value = "";
+    transferUserName.value = "";
   }
 };
 
 //* For Combine Page
 function initialPage() {
-  //nextPage();
-  previousPage();
+previousPage();
 }
 
 function nextPage(loginUserName) {
