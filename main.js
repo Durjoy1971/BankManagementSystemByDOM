@@ -76,7 +76,7 @@ const handleSignUpBtn = () => {
     alert("Type UserName and Password Correctly");
   }
 
-  let flag = userMatching(userName, passWord);
+  let flag = receiverMatching(userName);
   //* true means userName is not valid
 
   if (flag) {
@@ -95,6 +95,7 @@ const handleSignUpBtn = () => {
     signUpUserName.value = "";
     signUpPassword.value = "";
     alert("Account Created Successfully");
+    saveUsersToLocalStorage();
   }
 };
 
