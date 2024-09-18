@@ -248,10 +248,10 @@ const transferBtn = () => {
     flag = true;
   } else {
     console.log(value, currentUser.totalMoney);
-    if (value < 1 || value > currentUser.totalMoney)
-      alert(`Insufficient Balance!! `);
-    else if (receiver == currentUser.userName)
+     if (receiver == currentUser.userName)
       alert("Self Transaction Is Blocked");
+    else if (value < 1 || value > currentUser.totalMoney)
+      alert(`Insufficient Balance!! `);
     else alert("Receiver Not Found");
   }
 
